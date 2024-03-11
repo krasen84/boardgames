@@ -19,7 +19,7 @@ jobs:
         cache: 'npm'
     - name: install dependencies
       run: npm install
-    - name: run ui tests
+    - name: run UI tests
       run: npm run test:ui
     - name: Import my user id
       run: echo "krasen84"
