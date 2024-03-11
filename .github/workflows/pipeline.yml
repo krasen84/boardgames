@@ -20,7 +20,7 @@ jobs:
         cache: 'npm'
     - name: install dependencies
       run: npm install
-    - name: run UI tests
+    - name: run Unit tests
       run: npm run test:unit
     - name: Import my user id
       run: echo "krasen84"
@@ -34,4 +34,23 @@ jobs:
       with:
         service-id: ${{ secrets.MY_RENDER_SERVICE_ID }}
         api-key: ${{ secrets.MY_RENDER_API_KEY }}
- 
+
+  UI-tests:
+    needs: deploy
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Use Node.js18.x
+      uses: actions/setup-node@v3
+      with:
+        node-version: 18.x
+        cache: 'npm'
+    - name: install dependencies
+      run: npm install
+    - name: Install playwright
+      run: npx playwright install
+    - name: run UI tests
+      run: npm run test:un
+
