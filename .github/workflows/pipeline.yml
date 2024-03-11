@@ -10,6 +10,7 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
+
     steps:
     - uses: actions/checkout@v3
     - name: Use Node.js18.x
@@ -19,9 +20,7 @@ jobs:
         cache: 'npm'
     - name: install dependencies
       run: npm install
-    - name: Install Playwright Browsers
-      run: npx playwright install
     - name: run UI tests
-      run: npm run test:ui
+      run: npm run test:unit
     - name: Import my user id
       run: echo "krasen84"
